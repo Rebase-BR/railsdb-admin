@@ -1,0 +1,10 @@
+<div class="tabs is-boxed">
+  <ul>
+      <li class="<%= 'is-active' if controller_name == 'tables' %>">
+        <%= link_to "Tables", '/railsdb/tables' %>
+      </li>
+      <li class="<%= 'is-active' if controller_name == 'db_queries' %>">
+        <%= link_to "SQL run", 'to-do' %>
+      </li>
+  </ul>
+</div>

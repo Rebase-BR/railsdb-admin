@@ -1,0 +1,10 @@
+<table class="table is-fullwidth is-striped is-hoverable">
+  <caption>Database Tables</caption>
+  <% @tables.each do |table| %>
+    <tr>
+      <td><span><%= table.capitalize %></span></td>
+      <td><%= link_to 'Schema', table_schema_path(table) %></td>
+      <td><%= link_to 'Data', table_data_path(table) %></td>
+    </tr>
+  <% end %>
+</table>

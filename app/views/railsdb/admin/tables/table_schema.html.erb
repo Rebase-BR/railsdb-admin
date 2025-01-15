@@ -1,0 +1,74 @@
+<%= link_to 'Check this table data', table_data_path(@table), class: 'button is-primary' %>
+
+<div class="table-container">
+  <table class="table is-fullwidth is-striped is-hoverable">
+    <caption class="">Table <%= @table.capitalize %> columns</caption>
+    <thead>
+      <tr>
+        <% @columns.first.as_json.each do |key, value| %>
+          <th><%= key %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @columns.as_json.each do |column| %>
+        <tr>
+          <% column.values.each do |value| %>
+            <td> <%= value %>  </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if @foreign_keys.any? %>
+  <div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable">
+      <caption>Foreign keys</caption>
+      <thead>
+        <tr>
+          <% @foreign_keys.first.as_json.each do |key, value| %>
+            <th><%= key %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @foreign_keys.as_json.each do |column| %>
+          <tr>
+            <% column.values.each do |value| %>
+              <td> <%= value %>  </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<% if @foreign_keys.any? %>
+  <div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable">
+      <caption>Indexes</caption>
+      <thead>
+        <tr>
+          <% @indexes.first.as_json.each do |key, value| %>
+            <th><%= key %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @indexes.as_json.each do |column| %>
+          <tr>
+            <% column.values.each do |value| %>
+              <td> <%= value %>  </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

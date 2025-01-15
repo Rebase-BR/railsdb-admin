@@ -1,0 +1,25 @@
+<%= link_to 'Check this table schema', table_schema_path(@table), class: 'button is-primary' %>
+
+<div class="table-container">
+  <table class="table is-fullwidth is-striped is-hoverable">
+    <caption><%= @table.capitalize %></caption>
+    <thead>
+      <tr>
+        <% @columns.each do |column| %>
+          <th><%= column.name %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @data.each do |row| %>
+        <tr>
+          <% row.each do |key, value| %>
+            <td> <%= value %>  </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
