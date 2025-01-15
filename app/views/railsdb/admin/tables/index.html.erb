@@ -1,4 +1,4 @@
-<%= render 'layouts/railsdb/admin/search' %>
+<%= render 'layouts/railsdb/admin/control_pane', sort_by: @tables.first.keys.map(&:capitalize) %>
 
 <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
