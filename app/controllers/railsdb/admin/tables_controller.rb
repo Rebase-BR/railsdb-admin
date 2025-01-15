@@ -1,18 +1,21 @@
 module Railsdb
   module Admin
-    class Railsdb::Admin::TablesController < Railsdb::Admin::ApplicationController
+    class TablesController < ApplicationController
       before_action :set_connection, only: %i[ index table_data table_schema ]
 
+      # GET /tables
       def index
         @tables = @connection.tables
       end
 
+      # GET /table_data/:name
       def table_data
         @table = table_params[:name]
         @columns = @connection.columns(@table)
         @data = @connection.execute("SELECT * FROM #{@table}")
       end
 
+      # GET /table_schema/:name
       def table_schema
         @table = table_params[:name]
         @columns = @connection.columns(@table)
