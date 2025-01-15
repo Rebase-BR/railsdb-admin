@@ -5,7 +5,12 @@ module Railsdb
 
       # GET /tables
       def index
-        @tables = @connection.tables
+        @tables = @connection.tables.map do |table|
+          { name: table,
+            columns: @connection.columns(table).count,
+            records: @connection.execute("SELECT COUNT(1) FROM #{table}").first['COUNT(1)']
+          }
+        end
       end
 
       # GET /table_data/:name
@@ -27,7 +32,7 @@ module Railsdb
       private
 
       def set_connection
-        @connection ||= ActiveRecord::Base.connection
+        @connection ||= ActiveRecord::Base.with_connection { |con| con }
       end
 
       def table_params
