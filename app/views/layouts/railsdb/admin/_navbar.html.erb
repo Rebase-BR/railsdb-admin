@@ -3,8 +3,8 @@
       <li class="<%= 'is-active' if controller_name == 'tables' %>">
         <%= link_to "Tables", '/railsdb/tables' %>
       </li>
-      <li class="<%= 'is-active' if controller_name == 'db_queries' %>">
-        <%= link_to "SQL run", 'to-do' %>
+      <li class="<%= 'is-active' if controller_name == 'queries' %>">
+        <%= link_to "SQL run", new_query_path %>
       </li>
   </ul>
 </div>

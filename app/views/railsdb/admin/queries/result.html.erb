@@ -1,0 +1,24 @@
+<div style='margin-bottom: 20px;'>
+  <%= link_to 'New db query', new_db_query_path, class: 'button is-warning' %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <% @query_items.first.keys.each do |key| %>
+        <th><%= key %></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @query_items.each do |item| %>
+      <tr>
+        <% item.values.each do |item| %>
+          <td> <%= item %>  </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
