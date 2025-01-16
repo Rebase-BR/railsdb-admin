@@ -1,8 +1,25 @@
-<%= link_to 'Check this table schema', table_schema_path(@table), class: 'button is-primary' %>
+
+<div class='level'>
+  <div class='level-left'>
+    <div class='level-item'>
+      <p class='title'> <%= @table.capitalize %> </p>
+    </div>
+  </div>
+
+  <div class='level-right'>
+    <div class='level-item'>
+      <%= link_to 'Inspect schema', table_schema_path(@table), class: 'button is-primary' %>
+    </div>
+
+    <div class='level-item'>
+      <%= render 'railsdb/admin/shared/search', placeholder: "Search in #{@table}" %>
+    </div>
+  </div>
+</div>
+
 
 <div class="table-container">
   <table class="table is-fullwidth is-striped is-hoverable">
-    <caption><%= @table.capitalize %></caption>
     <thead>
       <tr>
         <% @columns.each do |column| %>
