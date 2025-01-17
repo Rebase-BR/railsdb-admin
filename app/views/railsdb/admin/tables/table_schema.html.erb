@@ -1,17 +1,17 @@
 <div class='level'>
   <div class='level-left'>
     <div class='level-item'>
-      <p class='title'> <%= @table.capitalize %> schema </p>
+      <p class='title'> <%= @table.name.capitalize %> schema </p>
     </div>
   </div>
 
   <div class='level-right'>
     <div class='level-item'>
-      <%= link_to 'Explore table data', table_data_path(@table), class: 'button is-primary' %>
+      <%= link_to 'Explore table data', table_data_path(@table.name), class: 'button is-primary' %>
     </div>
 
     <div class='level-item'>
-      <%= render 'railsdb/admin/shared/search', placeholder: "Search in #{@table} schema" %>
+      <%= render 'railsdb/admin/shared/search', placeholder: "Search in #{@table.name} schema" %>
     </div>
   </div>
 </div>
@@ -22,14 +22,14 @@
   <table class="table is-fullwidth is-striped is-hoverable">
     <thead>
       <tr>
-        <% @columns.first.as_json.each do |key, value| %>
+        <% @table.columns.first.as_json.each do |key, value| %>
           <th><%= key %></th>
         <% end %>
       </tr>
     </thead>
 
     <tbody>
-      <% @columns.as_json.each do |column| %>
+      <% @table.columns.as_json.each do |column| %>
         <tr>
           <% column.values.each do |value| %>
             <td> <%= value %>  </td>
@@ -40,20 +40,20 @@
   </table>
 </div>
 
-<% if @foreign_keys.any? %>
+<% if @table.foreign_keys.any? %>
   <div class="table-container">
     <table class="table is-fullwidth is-striped is-hoverable">
       <caption>Foreign keys</caption>
       <thead>
         <tr>
-          <% @foreign_keys.first.as_json.each do |key, value| %>
+          <% @table.foreign_keys.first.as_json.each do |key, value| %>
             <th><%= key %></th>
           <% end %>
         </tr>
       </thead>
 
       <tbody>
-        <% @foreign_keys.as_json.each do |column| %>
+        <% @table.foreign_keys.as_json.each do |column| %>
           <tr>
             <% column.values.each do |value| %>
               <td> <%= value %>  </td>
@@ -65,20 +65,20 @@
   </div>
 <% end %>
 
-<% if @foreign_keys.any? %>
+<% if @table.indexes.any? %>
   <div class="table-container">
     <table class="table is-fullwidth is-striped is-hoverable">
       <caption>Indexes</caption>
       <thead>
         <tr>
-          <% @indexes.first.as_json.each do |key, value| %>
+          <% @table.indexes.first.as_json.each do |key, value| %>
             <th><%= key %></th>
           <% end %>
         </tr>
       </thead>
 
       <tbody>
-        <% @indexes.as_json.each do |column| %>
+        <% @table.indexes.as_json.each do |column| %>
           <tr>
             <% column.values.each do |value| %>
               <td> <%= value %>  </td>
