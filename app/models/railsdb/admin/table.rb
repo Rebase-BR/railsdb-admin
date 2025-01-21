@@ -20,32 +20,29 @@ module Railsdb
 
         table_attrs.tap do |t|
           t.name         = name
-
-          # TODO: add pagination or LIMIT to the SELECT query
-          connection do |con|
-            t.columns      = con.columns(name)
-            t.data         = con.execute("SELECT * FROM #{name}")
-            t.primary_key  = con.primary_key(name)
-            t.foreign_keys = con.foreign_keys(name)
-            t.indexes      = con.indexes(name)
-          end
+          t.columns      = columns
+          t.data         = data
+          t.primary_key  = primary_key
+          t.foreign_keys = foreign_keys
+          t.indexes      = indexes
         end
       end
 
-      def columns = connection { it.columns(name) }
+      def columns = connection.columns(name)
 
-      def data = connection { it.execute("SELECT * FROM #{name}") }
+      # TODO: add pagination or LIMIT to the SELECT query
+      def data = connection.execute("SELECT * FROM #{name}")
 
-      def primary_key = connection { it.primary_key(name) }
+      def primary_key = connection.primary_key(name)
 
-      def foreign_keys = connection { it.foreign_keys(name) }
+      def foreign_keys = connection.foreign_keys(name)
 
-      def indexes = connection { it.indexes(name) }
+      def indexes = connection.indexes(name)
 
       private
 
-      def connection(&block)
-        ActiveRecord::Base.with_connection { |con| yield con }
+      def connection
+        @connection ||= ActiveRecord::Base.with_connection { |con| con }
       end
     end
   end
