@@ -27,12 +27,12 @@ class TableFlowsTest < ApplicationSystemTestCase
     assert_selector "td", text: "Products"
 
     # Check action buttons
-    assert_link 'Schema', class: "button is-info"
-    assert_link 'Data', class: "button is-primary"
+    assert_link "Schema", class: "button is-info"
+    assert_link "Data", class: "button is-primary"
   end
 
 
-  test 'view table data' do
+  test "view table data" do
     visit "/railsdb/table_data/products"
 
     within ".level-left" do
@@ -54,7 +54,7 @@ class TableFlowsTest < ApplicationSystemTestCase
     assert_selector "th", text: "updated_at"
   end
 
-  test 'view table schema details' do
+  test "view table schema details" do
     visit "/railsdb/table_schema/products"
 
     within ".level-left" do
