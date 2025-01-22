@@ -6,7 +6,7 @@ class DatabaseTest < ActiveSupport::TestCase
     @connection = ActiveRecord::Base.with_connection { |con| con }
   end
 
-  test '#info returns all table names' do
+  test '#info returns array with data from all tables' do
     expected_tables = @connection.tables
 
     db_info = @database_klass.info
