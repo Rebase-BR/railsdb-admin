@@ -28,6 +28,8 @@ module Railsdb
         end
       end
 
+      private
+
       def columns = connection.columns(name)
 
       # TODO: add pagination or LIMIT to the SELECT query
@@ -38,8 +40,6 @@ module Railsdb
       def foreign_keys = connection.foreign_keys(name)
 
       def indexes = connection.indexes(name)
-
-      private
 
       def connection
         @connection ||= ActiveRecord::Base.with_connection { |con| con }
