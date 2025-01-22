@@ -13,3 +13,6 @@ if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
   ActiveSupport::TestCase.file_fixture_path = File.expand_path("fixtures", __dir__) + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+# require app models and classes outside dummy test app
+Dir[File.expand_path('../app/**/*.rb', __dir__)].each { |file| require file }
