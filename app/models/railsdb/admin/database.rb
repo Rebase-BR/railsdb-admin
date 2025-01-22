@@ -24,7 +24,9 @@ module Railsdb
 
       private
 
-      def tables = connection.tables
+      def tables
+        connection.tables
+      end
 
       def connection
         ActiveRecord::Base.with_connection { |con| con }
