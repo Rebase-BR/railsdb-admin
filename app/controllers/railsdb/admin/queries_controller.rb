@@ -24,4 +24,3 @@ module Railsdb
     end
   end
 end
-

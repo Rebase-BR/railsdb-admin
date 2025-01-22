@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class DatabaseTest < ActiveSupport::TestCase
   setup do
@@ -6,7 +6,7 @@ class DatabaseTest < ActiveSupport::TestCase
     @connection = ActiveRecord::Base.with_connection { |con| con }
   end
 
-  test '#info returns array with data from all tables' do
+  test "#info returns array with data from all tables" do
     expected_tables = @connection.tables
 
     db_info = @database_klass.info
@@ -14,18 +14,18 @@ class DatabaseTest < ActiveSupport::TestCase
     assert_equal(expected_tables, db_info.map(&:name))
   end
 
-  test '#info includes column counts of a table' do
+  test "#info includes column counts of a table" do
     expected_column_count = Product.last.attributes.count
 
-    db_info = @database_klass.info.find { |t| t.name == 'products'}
+    db_info = @database_klass.info.find { |t| t.name == "products" }
 
     assert_equal(expected_column_count, db_info.columns)
   end
 
-  test '#info includes record counts of a table' do
+  test "#info includes record counts of a table" do
     expected_record_count = Product.count
 
-    db_info = @database_klass.info.find { |t| t.name == 'products'}
+    db_info = @database_klass.info.find { |t| t.name == "products" }
 
     assert_equal(expected_record_count, db_info[:records])
   end

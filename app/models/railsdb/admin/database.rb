@@ -17,7 +17,7 @@ module Railsdb
           ActiveSupport::OrderedOptions.new.tap do |attrs|
             attrs.name    = table
             attrs.columns = connection.columns(table).count
-            attrs.records = connection.execute("SELECT COUNT(1) FROM #{table}").first['COUNT(1)']
+            attrs.records = connection.execute("SELECT COUNT(1) FROM #{table}").first["COUNT(1)"]
           end
         end
       end

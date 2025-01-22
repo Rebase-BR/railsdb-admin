@@ -15,4 +15,4 @@ if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
 end
 
 # require app models and classes outside dummy test app
-Dir[File.expand_path('../app/**/*.rb', __dir__)].each { |file| require file }
+Dir[File.expand_path("../app/**/*.rb", __dir__)].each { |file| require file }
