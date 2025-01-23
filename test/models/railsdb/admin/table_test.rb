@@ -46,9 +46,9 @@ class TableTest < ActiveSupport::TestCase
   end
 
   test "#explore returns obj with table indexes" do
-    expected_indexes = @connection.indexes(@table_name).map(&:to_h)
+    expected_indexes = @connection.indexes(@table_name).map(&:as_json)
 
-    table_indexes = @table_klass.explore(@table_name).indexes.map(&:to_h)
+    table_indexes = @table_klass.explore(@table_name).indexes.map(&:as_json)
 
     assert_equal(expected_indexes, table_indexes)
   end
