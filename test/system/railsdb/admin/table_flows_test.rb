@@ -54,9 +54,11 @@ class TableFlowsTest < ApplicationSystemTestCase
     assert_selector "th", text: "updated_at"
   end
 
+
   test "view table schema details" do
     visit "/railsdb/table_schema/products"
 
+    # Verify control pane
     within ".level-left" do
       assert_text "Products schema"
     end
@@ -65,17 +67,22 @@ class TableFlowsTest < ApplicationSystemTestCase
       assert_link "Explore table data", href: "/railsdb/table_data/products", class: "button is-primary"
     end
 
-    within "table.table.is-fullwidth.is-striped.is-hoverable" do
+    # List all tables
+    tables = all(".table.table.is-fullwidth.is-striped.is-hoverable")
+
+    within tables[0] do
       assert_selector "th", text: "name"
       assert_selector "th", text: "sql_type_metadata"
     end
 
-    # within "table.table.is-fullwidth.is-striped.is-hoverable.foreign_keys" do
-    #   assert_selector "caption", text: "Foreign keys"
-    # end
+    within tables[1] do
+      assert_selector "caption", text: "Foreign keys"
+      assert_selector "th",      text: "from_table"
+    end
 
-    # within "table.table.is-fullwidth.is-striped.is-hoverable.indexes" do
-    #   assert_selector "caption", text: "Indexes"
-    # end
+    within tables[2] do
+      assert_selector "caption", text: "Indexes"
+      assert_selector "th",      text: "unique"
+    end
   end
 end
