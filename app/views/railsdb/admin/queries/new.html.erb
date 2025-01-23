@@ -1,6 +1,6 @@
 <% content_for :title, 'New db query' %>
 
-<%= form_with(url: '/db_queries', method: :post) do |f| %>
+<%= form_with(url: queries_path, method: :post) do |f| %>
   <div class='field'>
     <%= f.label :query, class: 'label' %><br>
     <%= f.text_area :query,
