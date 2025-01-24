@@ -29,7 +29,7 @@ module Railsdb
       end
 
       def connection
-        ActiveRecord::Base.with_connection { |con| con }
+        @connection ||= ActiveRecord::Base.with_connection { |con| con }
       end
     end
   end
