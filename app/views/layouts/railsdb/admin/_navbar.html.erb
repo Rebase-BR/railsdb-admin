@@ -1,0 +1,13 @@
+<div class="tabs is-boxed">
+  <ul>
+      <li class="<%= 'is-active' if controller_name == 'tables' %>">
+        <%= link_to "Tables", tables_path %>
+      </li>
+      <li class="<%= 'is-active' if controller_name == 'queries' %>">
+        <%= link_to "SQL run", new_query_path %>
+      </li>
+      <li class="<%= 'is-active' if controller_name == 'statistics' %>">
+        <%= link_to "Statistics", '#' %>
+      </li>
+  </ul>
+</div>
