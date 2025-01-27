@@ -1,0 +1,12 @@
+module Railsdb
+  module Admin
+    class StatsController < ApplicationController
+      def index
+        @stats = Railsdb::Admin::Stats.fetch_avg_durations
+        pp @stats
+      end
+
+      private
+    end
+  end
+end
