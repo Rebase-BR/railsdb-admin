@@ -4,7 +4,6 @@ module Railsdb
       def self.add_instrumentation
         ActiveSupport::Notifications.subscribe "sql.active_record" do |*args|
           event = ActiveSupport::Notifications::Event.new(*args)
-          # pp args
 
           event.payload[:alt_name] = event.payload[:name] || name_from_sql(event.payload[:sql])
           unless [ "SCHEMA", "TRANSACTION", "ActiveRecord::SchemaMigration Load" ].include?(event.payload[:name])
