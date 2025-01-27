@@ -3,7 +3,6 @@ module Railsdb
     class StatsController < ApplicationController
       def index
         @stats = Railsdb::Admin::Stats.fetch_avg_durations
-        pp @stats
       end
 
       private

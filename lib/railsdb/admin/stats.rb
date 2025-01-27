@@ -11,18 +11,16 @@ module Railsdb
           avg_duration = durations.sum / durations.size
           first_event = events.first
           payload = first_event.payload
-          gc_time = events.map(&:gc_time).sum
 
           {
             sql: payload[:sql].split(" /*").first,
-            avg_duration: avg_duration,
+            avg_duration: avg_duration.round(2),
             name: payload[:name] || payload[:alt_name],
             count: events.size,
-            max_duration: durations.max,
-            min_duration: durations.min,
-            gc_time: gc_time
+            max_duration: durations.max.round(2),
+            min_duration: durations.min.round(2)
           }
-        end
+        end.sort_by { |event| event[:avg_duration] }
       end
 
       private
