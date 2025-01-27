@@ -18,7 +18,7 @@ module Railsdb
             max_duration: durations.max.round(2),
             min_duration: durations.min.round(2)
           }
-        end.sort_by { |event| event[:avg_duration] }
+        end.sort_by { |event| event[:avg_duration] }.reverse
       end
 
       private
