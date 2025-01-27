@@ -3,6 +3,9 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in railsdb-admin.gemspec.
 gemspec
 
+gem "capybara"
+gem "selenium-webdriver"
+
 gem "puma"
 
 gem "sqlite3"

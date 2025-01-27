@@ -1,0 +1,16 @@
+<% content_for :title, 'New db query' %>
+
+<%= form_with(url: queries_path, method: :post) do |f| %>
+  <div class='field'>
+    <%= f.label :query, class: 'label' %><br>
+    <%= f.text_area :query,
+        class: 'textarea is-primary my-2',
+        rows: '4',
+        placeholder: 'e.g. SELECT * FROM table_name LIMIT 10'
+    %>
+  </div>
+
+  <div>
+    <%= f.submit 'Run', class: 'button is-warning' %>
+  </div>
+<% end %>

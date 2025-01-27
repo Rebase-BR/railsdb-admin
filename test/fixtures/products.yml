@@ -1,0 +1,4 @@
+sample_product:
+  name: name
+  code: code
+  catalog: sample_catalog

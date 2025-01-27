@@ -1,0 +1,25 @@
+
+<table class="table is-fullwidth is-striped is-hoverable">
+  <thead>
+      <tr>
+          <th>SQL Name</th>
+          <th>Count</th>
+          <th>Average</th>
+          <th>SQL</th>
+          <th>Min</th>
+          <th>Max</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @stats.each do |stat| %>
+      <tr class='table-row'>
+        <td class='is-vcentered'><span><%= stat[:name].capitalize %></span></td>
+        <td class='is-vcentered'><%= stat[:count] %></td>
+        <td class='is-vcentered'><%= stat[:avg_duration] %></td>
+        <td class='is-vcentered'><%= stat[:sql] %></td>
+        <td class='is-vcentered'><%= stat[:min_duration] %></td>
+        <td class='is-vcentered'><%= stat[:max_duration] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
