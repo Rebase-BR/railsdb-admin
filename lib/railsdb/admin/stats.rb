@@ -1,4 +1,3 @@
-require 'prettyprint'
 module Railsdb
   module Admin
     module Stats

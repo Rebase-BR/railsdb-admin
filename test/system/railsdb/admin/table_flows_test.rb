@@ -11,7 +11,7 @@ class TableFlowsTest < ApplicationSystemTestCase
       end
 
       assert_link "SQL run", href: "/railsdb/queries/new"
-      assert_link "Statistics", href: "#"
+      assert_link "Statistics", href: "/railsdb/stats"
     end
 
     # Check the main table

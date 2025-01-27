@@ -1,4 +1,3 @@
-require 'prettyprint'
 module Railsdb
   module Admin
     module MetricSubscriber
@@ -8,7 +7,7 @@ module Railsdb
           # pp args
 
           event.payload[:alt_name] = event.payload[:name] || name_from_sql(event.payload[:sql])
-          unless ["SCHEMA", "TRANSACTION", "ActiveRecord::SchemaMigration Load"].include?(event.payload[:name])
+          unless [ "SCHEMA", "TRANSACTION", "ActiveRecord::SchemaMigration Load" ].include?(event.payload[:name])
             EventStore.instance.add_event(event)
           end
         end

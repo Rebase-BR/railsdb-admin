@@ -11,11 +11,11 @@ module Railsdb
 
       def self.instance
         return @instance if @instance
-    
+
         @@instance_mutex.synchronize do
           @instance ||= new
         end
-    
+
         @instance
       end
 
@@ -24,7 +24,7 @@ module Railsdb
       end
 
       def add_event(event)
-        @@instance_mutex.synchronize do 
+        @@instance_mutex.synchronize do
           @events << event
         end
       end
