@@ -1,4 +1,3 @@
-require "pry"
 require 'prettyprint'
 module Railsdb
   module Admin
